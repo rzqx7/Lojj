@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Anniversary!</title>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #8c0303;
+    }
+
+    .landing-page, .letter-page {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .landing-page {
+      background: url('https://www.transparenttextures.com/patterns/clouds.png'), darkred;
+      background-size: cover;
+    }
+
+    .message-box, .letter-content {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 700px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+      margin-bottom: 0.5em;
+    }
+
+    /* Heart shaped buttons */
+    button {
+      margin: 10px;
+      padding: 10px 22px;
+      font-size: 16px;
+      background: #ff7675;
+      border: none;
+      color: white;
+      cursor: pointer;
+      position: relative;
+      transform: rotate(-45deg);
+      width: 50px;
+      height: 50px;
+      outline: none;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #ff4949;
+    }
+    button:before,
+    button:after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: #ff7675;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      transition: background 0.3s ease;
+    }
+    button:before {
+      top: -25px;
+      left: 0;
+    }
+    button:after {
+      top: 0;
+      left: 25px;
+    }
+    button span {
+      display: block;
+      transform: rotate(45deg);
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      user-select: none;
+    }
+
+    .signature {
+      margin-top: 2em;
+      font-family: 'Black Chancery', cursive;
+      font-style: italic;
+      font-size: 1.1em;
+      color: #e8e6da;
+    }
+
+    .corner-image {
+      position: absolute;
+      width: 100px;
+      top: 20px;
+      animation: floatIn 2s ease-in-out forwards;
+      z-index: 5;
+    }
+
+    .left {
+      left: 20px;
+    }
+
+    .right {
+      right: 20px;
+    }
+
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .letter-page {
+      background: url('https://www.transparenttextures.com/patterns/roses.png') repeat;
+    }
+
+    .rose-overlay {
+      background: url('https://www.transparenttextures.com/patterns/red-roses.png');
+      opacity: 0.15;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+    }
+
+    .letter-content {
+      position: relative;
+      z-index: 10;
+      max-width: 700px;
+      margin: auto;
+      background: rgba(255,255,255,0.85);
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.8;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .typed-line {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      margin-bottom: 0.7em;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    #animatedLetter::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #animatedLetter::-webkit-scrollbar-thumb {
+      background-color: #999;
+      border-radius: 3px;
+    }
+
+    .carousel {
+      margin-top: 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .carousel-img {
+      display: none;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="landing-page" id="page1">
+    <img src="images/carl.png" class="corner-image left" alt="Carl" />
+    <img src="images/ellie.png" class="corner-image right" alt="Ellie" />
+    <div class="message-box">
+      <h1>Happy Anniversary, Anas & Umarah!</h1>
+      <p>"Adventure is out there, but the best one is love. Cherish each other, through all the chapters of life."</p>
+      <p>– Carl & Ellie</p>
+      <button onclick="goToPage2()"><span>❤</span></button>
+    </div>
+  </div>
+
+  <div class="letter-page" id="page2" style="display:none;">
+    <div class="rose-overlay"></div>
+    <div class="letter-content" id="animatedLetter"></div>
+
+    <p class="signature">– Yours always, Anas</p>
+
+    <div class="buttons" style="text-align:center;">
+      <button onclick="toggleGallery()"><span>❤</span></button>
+      <button onclick="goToPage1()"><span>❤</span></button>
+    </div>
+
+    <div id="gallery" class="carousel" style="display:none;">
+      <img src="images/photo1.jpg" alt="Memory 1" class="carousel-img" />
+      <img src="images/photo2.jpg" alt="Memory 2" class="carousel-img" />
+      <img src="images/photo3.jpg" alt="Memory 3" class="carousel-img" />
+    </div>
+  </div>
+
+  <audio id="anniversarySong" loop>
+    <source src="media/met4planet_luna.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const letterLines = [
+      "From the first WhatsApp message, I knew my life was about to change.",
+      "You walked into my world like a breeze of warmth and light.",
+      "Every conversation, every laugh, every shared silence meant everything to me.",
+      "Your smile has the power to brighten the darkest days.",
+      "Your voice soothes my worries like a beautiful melody.",
+      "This year has been nothing short of magical.",
+      "I remember our trip to Chefchaouen – the colors, the air, the memories.",
+      "Holding your hand there felt like holding a piece of heaven.",
+      "You've made every ordinary moment extraordinary.",
+      "Your kindness and strength inspire me every day.",
+      "I admire how deeply you love and how gracefully you live.",
+      "You’ve become my safe place, my home, my heart.",
+      "With you, I found a love that poets dream of.",
+      "Even in silence, you make me feel heard.",
+      "Even in distance, you make me feel close.",
+      "Every morning I wake up grateful to be yours.",
+      "Every night I sleep knowing I'm loved.",
+      "Thank you for choosing me every day.",
+      "For your patience, your compassion, your unwavering love.",
+      "I promise to grow with you, to laugh with you, to lift you.",
+      "To cherish every year, every wrinkle, every moment we share.",
+      "I love you more than words could ever capture.",
+      "Happy anniversary, my soulmate.",
+      "Here's to forever, side by side, heart in heart.",
+      "Your laughter, your strength, your love – they are my greatest treasures.",
+      "Our journey from virtual to real, from strangers to soulmates, fills my heart every day.",
+      "I love you more than words can ever express.",
+      "Here's to forever, my love."
+    ];
+
+    let lineIndex = 0;
+
+    function typeLetterByLetter(line, callback) {
+      const container = document.getElementById("animatedLetter");
+      const p = document.createElement("p");
+      p.className = "typed-line";
+      container.appendChild(p);
+
+      let charIndex = 0;
+      function typeChar() {
+        if (charIndex < line.length) {
+          p.textContent += line.charAt(charIndex);
+          charIndex++;
+          container.scrollTop = container.scrollHeight; // scroll as you type
+          setTimeout(typeChar, 50); // slower typing speed
+        } else {
+          setTimeout(callback, 800); // delay before next line
+        }
+      }
+      typeChar();
+    }
+
+    function typeNextLine() {
+      if (lineIndex < letterLines.length) {
+        typeLetterByLetter(letterLines[lineIndex], typeNextLine);
+        lineIndex++;
+      }
+    }
+
+    function goToPage2() {
+      document.getElementById('page1').style.display = 'none';
+      document.getElementById('page2').style.display = 'block';
+      const container = document.getElementById("animatedLetter");
+      container.innerHTML = '';
+      lineIndex = 0;
+      typeNextLine();
+
+      // Start audio on page 2
+      const audio = document.getElementById("anniversarySong");
+      audio.currentTime = 48; // start at 0:48
+      audio.play().catch(() => {
+        // Autoplay might be blocked until user interaction; 
+        // since user clicked Continue, this should be fine
+      });
+    }
+
+    function goToPage1() {
+      document.getElementById('page2').style.display = 'none';
+      document.getElementById('page1').style.display = 'block';
+
+      // Pause audio when going back
+      const audio = document.getElementById("anniversarySong");
+      audio.pause();
+      audio.currentTime = 0;
+    }
+
+    let currentSlide = 0;
+    const slides = document.getElementsByClassName('carousel-img');
+
+    function toggleGallery() {
+      const gallery = document.getElementById('gallery');
+      gallery.style.display = gallery.style.display === 'block' ? 'none' : 'block';
+      showSlide(currentSlide);
+    }
+
+    function showSlide(index) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+      }
+      if(slides[index]) slides[index].style.display = 'block';
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (document.getElementById('gallery').style.display === 'block') {
+        if (event.key === "ArrowRight") {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        } else if (event.key === "ArrowLeft") {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          showSlide(currentSlide);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

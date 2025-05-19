@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #8c0303;
+}
+
+.landing-page, .letter-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.landing-page {
+  background: url('https://www.transparenttextures.com/patterns/clouds.png'), darkred;
+  background-size: cover;
+}
+
+.message-box, .letter-content {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  max-width: 700px;
+  position: relative;
+  z-index: 10; /* ensures it stays above images */
+}
+
+h1, h2 {
+  color: #2c3e50;
+  margin: 0 0 1em 0;
+}
+
+button {
+  position: relative;
+  width: 110px;
+  height: 95px;
+  background: #ff7675;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 0 4px 8px rgba(255, 118, 117, 0.6);
+  margin: 10px;
+  line-height: 95px;
+  text-align: center;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+button::before,
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 65px;
+  height: 65px;
+  background: #ff7675;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(255, 118, 117, 0.6);
+  transition: background 0.3s ease;
+  z-index: -1;
+}
+
+button::before {
+  left: 15px;
+}
+
+button::after {
+  right: 15px;
+}
+
+button:hover {
+  background: #d35454;
+}
+
+button:hover::before,
+button:hover::after {
+  background: #d35454;
+}
+
+.signature {
+  margin-top: 2em;
+  font-family: 'Black Chancery', cursive, serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.corner-image {
+  position: absolute;
+  width: 100px;
+  top: 80px; /* moved down from 20px to 80px */
+  animation: floatIn 10s ease-in-out forwards;
+  z-index: 0; /* behind content */
+}
+
+.left {
+  left: 20px;
+}
+
+.right {
+  right: 20px;
+}
+
+@keyframes floatIn {
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.letter-page {
+  background: url('https://www.transparenttextures.com/patterns/roses.png') repeat;
+}
+
+.rose-overlay {
+  background: url('https://www.transparenttextures.com/patterns/red-roses.png');
+  opacity: 0.15;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.letter-content {
+  position: relative;
+  z-index: 1;
+}
+
+.carousel {
+  margin-top: 20px;
+}
+
+.carousel-img {
+  display: none;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Animated letter text style */
+#animatedLetter {
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.8;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  color: #2c3e50;
+}
+
+.typed-line {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  font-family: 'Tangerine', cursive;
+  font-size: 38px;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
